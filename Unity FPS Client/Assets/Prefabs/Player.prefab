@@ -79,7 +79,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b62a28917b755714d9f1b9ac9275ef9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2
+  _speed: 4
+  _minCameraAngle: -90
+  _maxCameraAngle: 90
+  _jumpForce: 10
   _rigidbody: {fileID: 6413089558809798799}
   _headTransform: {fileID: 7121312800172644477}
   _bodyTransform: {fileID: 1649207187645075976}

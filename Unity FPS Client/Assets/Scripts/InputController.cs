@@ -29,6 +29,11 @@ public class InputController : MonoBehaviour
         _playerMovement.RotateX(-mouseY * _mouseSensitivityVertical);
         _playerMovement.RotateY(mouseX * _mouseSensitivityHorizontal);
 
+        bool space = Input.GetKeyDown(KeyCode.Space);
+        
+        if(space)
+            _playerMovement.Jump();
+
         SendMove();
     }
 
