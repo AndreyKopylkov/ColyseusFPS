@@ -12,7 +12,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{df841dd9-f02a-d7d3-566f-fbeff192e819}</ProjectGuid>
+    <ProjectGuid>{cd204e80-2831-c521-6c3b-3f27f275b5c4}</ProjectGuid>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -46,11 +46,13 @@
     <Analyzer Include="D:\Unity\Editor\6000.0.23f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\EnemyController.cs" />
+    <Compile Include="Assets\Scripts\EnemyMovement.cs" />
+    <Compile Include="Assets\Scripts\InputController.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\Colyseus\State.cs" />
-    <Compile Include="Assets\Scripts\Movement.cs" />
+    <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\MultiplayerManager.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\Colyseus\Player.cs" />
-    <Compile Include="Assets\Scripts\Controller.cs" />
     <Reference Include="UnityEngine">
       <HintPath>D:\Unity\Editor\6000.0.23f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
@@ -400,16 +402,16 @@
       <HintPath>D:\Unity\Editor\6000.0.23f1\Editor\Data\Managed\UnityEngine\UnityEditor.XRModule.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\PackageCache\com.unity.ext.nunit\net40\unity-custom\nunit.framework.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\PackageCache\com.unity.ext.nunit\net40\unity-custom\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="ReportGeneratorMerged">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\PackageCache\com.unity.testtools.codecoverage\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\PackageCache\com.unity.testtools.codecoverage\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
     </Reference>
     <Reference Include="LucidSightTools">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\PackageCache\io.colyseus.sdk\Runtime\Scripts\Tools\LucidSightTools.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\PackageCache\io.colyseus.sdk\Runtime\Scripts\Tools\LucidSightTools.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\PackageCache\com.unity.visualscripting\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\PackageCache\com.unity.visualscripting\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Android.Types">
       <HintPath>D:\Unity\Editor\6000.0.23f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
@@ -784,85 +786,85 @@
       <HintPath>D:\Unity\Editor\6000.0.23f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="LucidSight.Editor.Tests">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\ScriptAssemblies\LucidSight.Editor.Tests.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\ScriptAssemblies\LucidSight.Editor.Tests.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
     <Reference Include="ParrelSync">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\ScriptAssemblies\ParrelSync.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\ScriptAssemblies\ParrelSync.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Multiplayer.Center.Editor">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\ScriptAssemblies\Unity.Multiplayer.Center.Editor.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\ScriptAssemblies\Unity.Multiplayer.Center.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Performance.Profile-Analyzer.Editor">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\ScriptAssemblies\Unity.Performance.Profile-Analyzer.Editor.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\ScriptAssemblies\Unity.Performance.Profile-Analyzer.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Shared.Editor">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core.Editor">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Multiplayer.Center.Common">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\ScriptAssemblies\Unity.Multiplayer.Center.Common.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\ScriptAssemblies\Unity.Multiplayer.Center.Common.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="LucidSight.Runtime.ColyseusSDK">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\ScriptAssemblies\LucidSight.Runtime.ColyseusSDK.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\ScriptAssemblies\LucidSight.Runtime.ColyseusSDK.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow.Editor">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
     </Reference>
     <Reference Include="Unity.EditorCoroutines.Editor">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State.Editor">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
-      <HintPath>D:\Unity\Projects\ColyseusFPS\ColyseusFPSUnity\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
+      <HintPath>D:\Unity\Projects\ColyseusFPS\Unity FPS Client\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

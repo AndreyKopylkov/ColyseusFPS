@@ -1,11 +1,13 @@
+using System.Collections.Generic;
 using Colyseus;
+using Colyseus.Schema;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class MultiplayerManager : ColyseusManager<MultiplayerManager>
 {
     [SerializeField] private GameObject _player;
-    [SerializeField] private GameObject _enemy;
+    [SerializeField] private EnemyController _enemyController;
     
     private ColyseusRoom<State> _room;
 
@@ -43,7 +45,7 @@ public class MultiplayerManager : ColyseusManager<MultiplayerManager>
         {
             state.players.ForEach((key, player) =>
             {
-                if (key == _room.SerializerId)
+                if (key == _room.SessionId)
                     CreatePlayer(player);
                 else
                     CreateEnemy(key, player);
@@ -60,18 +62,24 @@ public class MultiplayerManager : ColyseusManager<MultiplayerManager>
 
     private void CreatePlayer(Player player)
     {
-        var position = new Vector3(player.x, 0, player.y);
+        var position = new Vector3(player.x, 0, player.z);
         Instantiate(_player, position, Quaternion.identity);
     }
 
     private void CreateEnemy(string key, Player player)
     {
-        var position = new Vector3(player.x, 0, player.y);
-        Instantiate(_enemy, position, Quaternion.identity);
+        var position = new Vector3(player.x, 0, player.z);
+        EnemyController newEnemyController = Instantiate(_enemyController, position, Quaternion.identity);
+        player.OnChange += newEnemyController.OnChange;
     }
 
     private void RemoveEnemy(string key, Player value)
     {
         
+    }
+
+    public void SendMessage(string key, Dictionary<string, object> data)
+    {
+        _room.Send(key, data);
     }
 }

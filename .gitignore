@@ -2,13 +2,13 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
-/[Ll]ogs/
-/[Uu]ser[Ss]ettings/
+/Unity FPS Client/[Ll]ibrary/
+/Unity FPS Client/[Tt]emp/
+/Unity FPS Client/[Oo]bj/
+/Unity FPS Client/[Bb]uild/
+/Unity FPS Client/[Bb]uilds/
+/Unity FPS Client/[Ll]ogs/
+/Unity FPS Client/[Uu]ser[Ss]ettings/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
@@ -70,3 +70,11 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+#other
+/Unity FPS Client_clone_0
+/Colyseum FPS Server/node_modules
+/Colyseum FPS Server/package-lock.json
+/Colyseum FPS Server/npm-debug.log
+/Colyseum FPS Server/lib
+/Colyseum FPS Server/*.js

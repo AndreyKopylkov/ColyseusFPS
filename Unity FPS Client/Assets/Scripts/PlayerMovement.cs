@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _speed = 2f;
-    
+
     private float _inputH;
     private float _inputV;
     
@@ -26,5 +26,10 @@ public class Movement : MonoBehaviour
     {
         Vector3 direction = new Vector3(_inputH, 0, _inputV).normalized;
         transform.position += direction * Time.deltaTime * _speed;  
+    }
+
+    public void GetMoveInfo(out Vector3 position)
+    {
+        position = transform.position;
     }
 }
