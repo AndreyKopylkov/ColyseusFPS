@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
-    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private PlayerMovement _playerMovement;
+    [SerializeField] private float _mouseSensitivityVertical = 2f;
+    [SerializeField] private float _mouseSensitivityHorizontal = 2f;
     
     private float _inputH;
     private float _inputV;
@@ -19,14 +21,20 @@ public class InputController : MonoBehaviour
         _inputH = Input.GetAxisRaw("Horizontal");
         _inputV = Input.GetAxisRaw("Vertical");
 
-        playerMovement.SetInput(_inputH, _inputV);
+        _playerMovement.SetInput(_inputH, _inputV);
+
+        float mouseX = Input.GetAxis("Mouse X");
+        float mouseY = Input.GetAxis("Mouse Y");
         
+        _playerMovement.RotateX(-mouseY * _mouseSensitivityVertical);
+        _playerMovement.RotateY(mouseX * _mouseSensitivityHorizontal);
+
         SendMove();
     }
 
     private void SendMove()
     {
-        playerMovement.GetMoveInfo(out Vector3 position, out Vector3 velocity);
+        _playerMovement.GetMoveInfo(out Vector3 position, out Vector3 velocity);
         Dictionary<string, object> data = new Dictionary<string, object>()
         {
             {"pX", position.x},
