@@ -47,7 +47,6 @@ GameObject:
   - component: {fileID: 7825676809143521750}
   - component: {fileID: 866332942521520182}
   - component: {fileID: 6413089558809798799}
-  - component: {fileID: 5164062736941985979}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -88,11 +87,13 @@ MonoBehaviour:
   _maxCameraAngle: 90
   _jumpForce: 10
   _jumpReload: 0.5
+  _crawlSizeY: 0.3
   _rigidbody: {fileID: 6413089558809798799}
   _headTransform: {fileID: 7121312800172644477}
   _bodyTransform: {fileID: 1649207187645075976}
   _cameraPoint: {fileID: 1743170058557607103}
   _checkFly: {fileID: 4432687567602126663}
+  _modelTransform: {fileID: 861038492704505694}
 --- !u!114 &7196513684586783280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,29 +199,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!136 &5164062736941985979
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2651994499770711427}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &3224992570921602925
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +208,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 861038492704505694}
+  - component: {fileID: 2027257954839693481}
   m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
@@ -253,6 +232,29 @@ Transform:
   - {fileID: 582095683642546942}
   m_Father: {fileID: 1649207187645075976}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &2027257954839693481
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3224992570921602925}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &7718651472442103971
 GameObject:
   m_ObjectHideFlags: 0

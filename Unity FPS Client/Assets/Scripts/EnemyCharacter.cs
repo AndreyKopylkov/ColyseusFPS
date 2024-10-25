@@ -3,10 +3,14 @@ using UnityEngine;
 
 public class EnemyCharacter : Character
 {
-    [SerializeField] private Transform _transformHead;
-    [SerializeField] private Transform _transformBody;
+    [Header("Settings")]
     [SerializeField] private float _rotateSpeed = 10f;
     
+    [Header("Components")]
+    [SerializeField] private Transform _transformHead;
+    [SerializeField] private Transform _transformBody;
+    [SerializeField] private Transform _modelTransform;
+
     public Vector3 TargetPosition { get; private set; } = Vector3.zero;
     public Vector3 TargetRotationX { get; private set; } = Vector3.zero;
     public Vector3 TargetRotationY { get; private set; } = Vector3.zero;
@@ -85,5 +89,10 @@ public class EnemyCharacter : Character
         // _transformBody.localEulerAngles = new Vector3(0, value, 0);
         
         TargetRotationY = new Vector3(0, value, 0);
+    }
+    
+    public void Crawl(float localScaleY)
+    {
+        _modelTransform.localScale = new Vector3(1, localScaleY, 1);
     }
 }

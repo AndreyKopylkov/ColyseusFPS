@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Colyseus;
 using Colyseus.Schema;
@@ -49,6 +50,7 @@ public class MultiplayerManager : ColyseusManager<MultiplayerManager>
         //в <> указываем получаемый тип данных
         //второй аргумент - какой метод вызывается
         _room.OnMessage<string>("Shoot", ApplyShoot);
+        _room.OnMessage<Dictionary<string, object>>("Crawl", ApplyCrawl);
     }
 
     private void OnChange(State state, bool isFirstState)
@@ -108,6 +110,17 @@ public class MultiplayerManager : ColyseusManager<MultiplayerManager>
         }
         
         _enemies[shootInfo.key].Shoot(shootInfo);
+    }
+
+    private void ApplyCrawl(Dictionary<string, object> data)
+    {
+        if (_enemies.ContainsKey((string) data["key"]) == false)
+        {
+            Debug.Log("Missing enemy try shoot");
+            return;
+        }
+        
+        _enemies[(string) data["key"]].Crawl(Convert.ToSingle(data["sMY"]));
     }
 
     public void SendMessage(string key, Dictionary<string, object> data)

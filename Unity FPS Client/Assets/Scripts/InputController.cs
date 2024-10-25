@@ -46,8 +46,19 @@ public class InputController : MonoBehaviour
         if (isShoot && _playerGun.TryShoot(out ShootInfo info)) SendShoot(ref info);
 
         bool isCrawl = Input.GetKeyDown(KeyCode.LeftControl);
+        bool isStopCrawl = Input.GetKeyUp(KeyCode.LeftControl);
 
-        if (isCrawl) playerCharacter.Crawl();
+        if (isCrawl)
+        {
+            playerCharacter.Crawl();
+            SendCrawl();
+        }
+
+        if (isStopCrawl)
+        {
+            playerCharacter.StopCrawl();
+            SendCrawl();
+        }
 
         SendMove();
     }
@@ -74,6 +85,18 @@ public class InputController : MonoBehaviour
             {"rY", rotateY}
         };
         _multiplayerManager.SendMessage("move", data);
+    }
+
+    private void SendCrawl()
+    {
+        playerCharacter.GetModelTransformInfo(out Vector3 modelScale);
+
+        Dictionary<string, object> data = new Dictionary<string, object>()
+        {
+            {"key", _multiplayerManager.GetSessionID()},
+            {"sMY", modelScale.y}
+        };
+        _multiplayerManager.SendMessage("crawl", data);
     }
 }
 

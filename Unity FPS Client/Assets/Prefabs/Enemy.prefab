@@ -66,9 +66,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 3
+  _rotateSpeed: 15
+  _crawlSizeY: 0.3
   _transformHead: {fileID: 771622868224821962}
   _transformBody: {fileID: 1649207187645075976}
-  _rotateSpeed: 15
+  _modelTransform: {fileID: 861038492704505694}
 --- !u!114 &6081482647395042928
 MonoBehaviour:
   m_ObjectHideFlags: 0

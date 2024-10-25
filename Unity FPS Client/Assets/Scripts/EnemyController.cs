@@ -107,4 +107,9 @@ public class EnemyController : MonoBehaviour
     {
         _enemyGun.Shoot(new Vector3(info.pX, info.pY, info.pZ), new Vector3(info.vX, info.vY, info.vZ));
     }
+
+    public void Crawl(float localScaleY)
+    {
+        _enemyCharacter.Crawl(localScaleY);
+    }
 }

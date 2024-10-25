@@ -92,11 +92,21 @@ public class PlayerCharacter : Character
         rotateY = _bodyTransform.eulerAngles.y;
     }
 
+    public void GetModelTransformInfo(out Vector3 modelScale)
+    {
+        modelScale = _modelTransform.localScale;
+    }
+
     public void Crawl()
     {
         if(_checkFly.IsFly)
             return;
-        
-        // _modelTransform
+
+        _modelTransform.localScale = new Vector3(1, _crawlSizeY, 1);
+    }
+
+    public void StopCrawl()
+    {
+        _modelTransform.localScale = new Vector3(1, 1, 1);
     }
 }
