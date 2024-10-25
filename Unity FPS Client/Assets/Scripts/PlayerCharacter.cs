@@ -13,6 +13,7 @@ public class PlayerCharacter : Character
     [SerializeField] private float _maxCameraAngle = 90f;
     [SerializeField] private float _jumpForce = 10f;
     [SerializeField] private float _jumpReload = 0.5f;
+    [SerializeField] private float _crawlSizeY = 0.3f;
 
     [Header("Components")]
     [SerializeField] private Rigidbody _rigidbody;
@@ -20,6 +21,7 @@ public class PlayerCharacter : Character
     [SerializeField] private Transform _bodyTransform;
     [SerializeField] private Transform _cameraPoint;
     [SerializeField] private CheckFly _checkFly;
+    [SerializeField] private Transform _modelTransform;
 
     private float _inputH;
     private float _inputV;
@@ -88,5 +90,13 @@ public class PlayerCharacter : Character
 
         rotateX = _headTransform.localEulerAngles.x;
         rotateY = _bodyTransform.eulerAngles.y;
+    }
+
+    public void Crawl()
+    {
+        if(_checkFly.IsFly)
+            return;
+        
+        // _modelTransform
     }
 }

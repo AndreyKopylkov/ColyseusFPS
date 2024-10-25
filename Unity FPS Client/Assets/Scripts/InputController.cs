@@ -45,6 +45,10 @@ public class InputController : MonoBehaviour
 
         if (isShoot && _playerGun.TryShoot(out ShootInfo info)) SendShoot(ref info);
 
+        bool isCrawl = Input.GetKeyDown(KeyCode.LeftControl);
+
+        if (isCrawl) playerCharacter.Crawl();
+
         SendMove();
     }
 

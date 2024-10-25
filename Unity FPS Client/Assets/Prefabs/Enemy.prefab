@@ -68,6 +68,7 @@ MonoBehaviour:
   <Speed>k__BackingField: 3
   _transformHead: {fileID: 771622868224821962}
   _transformBody: {fileID: 1649207187645075976}
+  _rotateSpeed: 15
 --- !u!114 &6081482647395042928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,11 +237,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6128295628213254845, guid: 5b9e5150db7b2204d98b5f69a683d1e6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9191353
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6128295628213254845, guid: 5b9e5150db7b2204d98b5f69a683d1e6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.39394203
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6128295628213254845, guid: 5b9e5150db7b2204d98b5f69a683d1e6, type: 3}
       propertyPath: m_LocalRotation.y
