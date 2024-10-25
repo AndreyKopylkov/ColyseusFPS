@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class DestroySelfTimer : MonoBehaviour
+public class DestroySelf : MonoBehaviour
 {
-    [SerializeField] private float _timer;
+    [SerializeField] private float _timer = 10f;
 
     private void Awake()
     {

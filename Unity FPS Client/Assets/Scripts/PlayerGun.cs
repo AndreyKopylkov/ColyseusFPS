@@ -1,17 +1,15 @@
 using System;
 using UnityEngine;
 
-public class PlayerGun : MonoBehaviour
+public class PlayerGun : Gun
 {
-    [SerializeField] private Bullet _bulletPrefab;
     [SerializeField] private Transform _bulletSpawnPoint;
-    [SerializeField] private float _bulletSpeed = 10f;
+    [SerializeField] private float _bulletSpeed = 50f;
     [SerializeField] private float _shotFrequency = 200;
 
     private float _lastShootTime = 0;
     private float _shootDelay;
 
-    public event Action OnShoot;
 
     private void Start()
     {
@@ -25,18 +23,17 @@ public class PlayerGun : MonoBehaviour
         if(Time.time - _lastShootTime < _shootDelay) return false;
 
         Vector3 position = _bulletSpawnPoint.position;
-        Vector3 direction = _bulletSpawnPoint.forward;
+        Vector3 velocity = _bulletSpawnPoint.forward * _bulletSpeed;
+        
         _lastShootTime = Time.time;
-        Instantiate(_bulletPrefab, _bulletSpawnPoint.position, _bulletSpawnPoint.rotation).
-            Initialize(_bulletSpawnPoint.forward, _bulletSpeed);
+        Instantiate(_bulletPrefab, _bulletSpawnPoint.position, _bulletSpawnPoint.rotation).Initialize(velocity);
 
-        direction *= _bulletSpeed;
         info.pX = position.x;
         info.pY = position.y;
         info.pZ = position.z;
-        info.dX = direction.x;
-        info.dY = direction.y;
-        info.dZ = direction.z;
+        info.vX = velocity.x;
+        info.vY = velocity.y;
+        info.vZ = velocity.z;
         
         OnShoot?.Invoke();
 

@@ -5,8 +5,13 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rigidbody;
 
-    public void Initialize(Vector3 direction, float speed)
+    public void Initialize(Vector3 velocity)
     {
-        _rigidbody.linearVelocity = direction * speed;
+        _rigidbody.linearVelocity = velocity;
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        Destroy(gameObject);
     }
 }

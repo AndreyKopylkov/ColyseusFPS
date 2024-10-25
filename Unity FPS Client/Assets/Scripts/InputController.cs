@@ -78,11 +78,13 @@ public struct ShootInfo
 {
     public string key;
     
+    //Position
     public float pX;
     public float pY;
     public float pZ;
 
-    public float dX;
-    public float dY;
-    public float dZ;
+    //Velocity
+    public float vX;
+    public float vY;
+    public float vZ;
 }

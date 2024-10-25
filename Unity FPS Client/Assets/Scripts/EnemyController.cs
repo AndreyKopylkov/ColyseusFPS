@@ -7,6 +7,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] private EnemyCharacter _enemyCharacter;
+    [SerializeField] private EnemyGun _enemyGun;
 
     Vector3 velocity = Vector3.zero;
     private Queue<float> _receiveTimeIntervalQueue = new Queue<float>();
@@ -104,6 +105,6 @@ public class EnemyController : MonoBehaviour
 
     public void Shoot(in ShootInfo info)
     {
-        
+        _enemyGun.Shoot(new Vector3(info.pX, info.pY, info.pZ), new Vector3(info.vX, info.vY, info.vZ));
     }
 }

@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c3d023c2565400390565869ea572c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerGun: {fileID: 7825676809143521750}
+  _gun: {fileID: 7825676809143521750}
   _animator: {fileID: 5313589479000105581}
 --- !u!54 &6413089558809798799
 Rigidbody:
