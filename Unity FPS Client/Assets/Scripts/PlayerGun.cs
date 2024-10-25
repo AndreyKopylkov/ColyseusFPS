@@ -18,14 +18,28 @@ public class PlayerGun : MonoBehaviour
         _shootDelay = 60f / _shotFrequency;
     }
 
-    public void Shoot()
+    public bool TryShoot(out ShootInfo info)
     {
-        if(Time.time - _lastShootTime < _shootDelay) return;
+        info = new ShootInfo();
         
+        if(Time.time - _lastShootTime < _shootDelay) return false;
+
+        Vector3 position = _bulletSpawnPoint.position;
+        Vector3 direction = _bulletSpawnPoint.forward;
         _lastShootTime = Time.time;
         Instantiate(_bulletPrefab, _bulletSpawnPoint.position, _bulletSpawnPoint.rotation).
             Initialize(_bulletSpawnPoint.forward, _bulletSpeed);
+
+        direction *= _bulletSpeed;
+        info.pX = position.x;
+        info.pY = position.y;
+        info.pZ = position.z;
+        info.dX = direction.x;
+        info.dY = direction.y;
+        info.dZ = direction.z;
         
         OnShoot?.Invoke();
+
+        return true;
     }
 }

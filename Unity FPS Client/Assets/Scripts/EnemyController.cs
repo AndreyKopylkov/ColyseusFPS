@@ -101,4 +101,9 @@ public class EnemyController : MonoBehaviour
 
         _enemyCharacter.SetMovement(position, velocity, AverageInterval);
     }
+
+    public void Shoot(in ShootInfo info)
+    {
+        
+    }
 }

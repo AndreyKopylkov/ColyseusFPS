@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,10 +9,16 @@ public class InputController : MonoBehaviour
     [SerializeField] private PlayerGun _playerGun;
     [SerializeField] private float _mouseSensitivityVertical = 2f;
     [SerializeField] private float _mouseSensitivityHorizontal = 2f;
-    
+
+    private MultiplayerManager _multiplayerManager;
     private float _inputH;
     private float _inputV;
-    
+
+    private void Start()
+    {
+        _multiplayerManager = MultiplayerManager.Instance;
+    }
+
     private void Update()
     {
         GetInput();
@@ -35,10 +42,17 @@ public class InputController : MonoBehaviour
         if(space) playerCharacter.Jump();
 
         bool isShoot = Input.GetMouseButton(0);
-        
-        if(isShoot) _playerGun.Shoot();
+
+        if (isShoot && _playerGun.TryShoot(out ShootInfo info)) SendShoot(ref info);
 
         SendMove();
+    }
+
+    private void SendShoot(ref ShootInfo info)
+    {
+        info.key = _multiplayerManager.GetSessionID();
+        string json = JsonUtility.ToJson(info);
+        _multiplayerManager.SendMessage("shoot", json);
     }
 
     private void SendMove()
@@ -55,6 +69,20 @@ public class InputController : MonoBehaviour
             {"rX", rotateX},
             {"rY", rotateY}
         };
-        MultiplayerManager.Instance.SendMessage("move", data);
+        _multiplayerManager.SendMessage("move", data);
     }
+}
+
+[System.Serializable]
+public struct ShootInfo
+{
+    public string key;
+    
+    public float pX;
+    public float pY;
+    public float pZ;
+
+    public float dX;
+    public float dY;
+    public float dZ;
 }
