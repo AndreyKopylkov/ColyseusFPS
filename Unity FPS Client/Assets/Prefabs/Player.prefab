@@ -42,6 +42,8 @@ GameObject:
   - component: {fileID: 1649207187645075976}
   - component: {fileID: 5668833735596454156}
   - component: {fileID: 7196513684586783280}
+  - component: {fileID: 4432687567602126663}
+  - component: {fileID: 4570407911002052216}
   - component: {fileID: 6413089558809798799}
   - component: {fileID: 5164062736941985979}
   m_Layer: 0
@@ -79,14 +81,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b62a28917b755714d9f1b9ac9275ef9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 4
+  <Speed>k__BackingField: 3
   _minCameraAngle: -90
   _maxCameraAngle: 90
   _jumpForce: 10
+  _jumpReload: 0.5
   _rigidbody: {fileID: 6413089558809798799}
   _headTransform: {fileID: 7121312800172644477}
   _bodyTransform: {fileID: 1649207187645075976}
   _cameraPoint: {fileID: 1743170058557607103}
+  _checkFly: {fileID: 4432687567602126663}
 --- !u!114 &7196513684586783280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,9 +103,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ac980d6bdca1e41b84f5bf82a90132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerMovement: {fileID: 5668833735596454156}
+  playerCharacter: {fileID: 5668833735596454156}
   _mouseSensitivityVertical: 2
   _mouseSensitivityHorizontal: 3
+--- !u!114 &4432687567602126663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2651994499770711427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1353b166472546bfb47d9433f445b87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _radius: 0.2
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _coyoteTime: 0.2
+--- !u!114 &4570407911002052216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2651994499770711427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7acee5920052904ba329ee0aacd7b0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 7230848488203100887}
+  _checkFly: {fileID: 4432687567602126663}
+  _character: {fileID: 5668833735596454156}
 --- !u!54 &6413089558809798799
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -242,7 +278,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6128295628213254845, guid: 5b9e5150db7b2204d98b5f69a683d1e6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1743170058557607103}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5773215855315535954, guid: 5b9e5150db7b2204d98b5f69a683d1e6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7230848488203100887}
   m_SourcePrefab: {fileID: 100100000, guid: 5b9e5150db7b2204d98b5f69a683d1e6, type: 3}
 --- !u!4 &582095683642546942 stripped
 Transform:
@@ -254,3 +293,30 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6128295628213254845, guid: 5b9e5150db7b2204d98b5f69a683d1e6, type: 3}
   m_PrefabInstance: {fileID: 4026191839425028800}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7476394428395760274 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5773215855315535954, guid: 5b9e5150db7b2204d98b5f69a683d1e6, type: 3}
+  m_PrefabInstance: {fileID: 4026191839425028800}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7230848488203100887
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7476394428395760274}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 473a202cae3a8a34fb818572b2dd62e7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
