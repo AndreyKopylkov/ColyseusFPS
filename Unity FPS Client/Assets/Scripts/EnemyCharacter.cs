@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class EnemyCharacter : Character
 {
+    [SerializeField] private Transform _transformHead;
+    [SerializeField] private Transform _transformBody;
+    
     public Vector3 TargetPosition { get; private set; } = Vector3.zero;
 
     private float _velocityMagnitude = 0;
@@ -35,4 +38,14 @@ public class EnemyCharacter : Character
     }
 
     public void SetSpeed(float speed) => Speed = speed;
+
+    public void SetRotateX(float value)
+    {
+        _transformHead.localEulerAngles = new Vector3(value, 0, 0);
+    }
+    
+    public void SetRotateY(float value)
+    {
+        _transformBody.localEulerAngles = new Vector3(0, value, 0);
+    }
 }

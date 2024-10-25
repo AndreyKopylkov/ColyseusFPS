@@ -76,7 +76,7 @@ public class MultiplayerManager : ColyseusManager<MultiplayerManager>
     {
         var position = new Vector3(player.pX, player.pY, player.pZ);
         EnemyController newEnemyController = Instantiate(_enemyController, position, Quaternion.identity);
-        _enemyController.Initialize(player);
+        newEnemyController.Initialize(player);
     }
 
     private void RemoveEnemy(string key, Player value)

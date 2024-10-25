@@ -63,6 +63,7 @@ public class EnemyController : MonoBehaviour
         SaveReceiveTime();
         
         Vector3 position = _enemyCharacter.TargetPosition;
+        velocity = _enemyCharacter.Velocity;
         
         foreach (var dataChange in changes)
         {
@@ -85,6 +86,12 @@ public class EnemyController : MonoBehaviour
                     break;
                 case "vZ":
                     velocity.z = (float) dataChange.Value;
+                    break;
+                case "rX":
+                    _enemyCharacter.SetRotateX((float) dataChange.Value);
+                    break;
+                case "rY":
+                    _enemyCharacter.SetRotateY((float) dataChange.Value);
                     break;
                 default:
                     Debug.Log($"Не обрабатывается изменение поля {dataChange.Field}");

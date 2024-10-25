@@ -81,9 +81,12 @@ public class PlayerCharacter : Character
         _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.VelocityChange);
     }
 
-    public void GetMoveInfo(out Vector3 position, out Vector3 velocity)
+    public void GetMoveInfo(out Vector3 position, out Vector3 velocity, out float rotateX, out float rotateY)
     {
         position = transform.position;
         velocity = _rigidbody.linearVelocity;
+
+        rotateX = _headTransform.localEulerAngles.x;
+        rotateY = _bodyTransform.eulerAngles.y;
     }
 }
