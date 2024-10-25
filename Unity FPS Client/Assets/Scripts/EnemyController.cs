@@ -6,11 +6,12 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private EnemyMovement _enemyMovement;
+    [SerializeField] private EnemyCharacter _enemyCharacter;
 
     Vector3 velocity = Vector3.zero;
     private Queue<float> _receiveTimeIntervalQueue = new Queue<float>();
     private float _lastReceiveTime = 0;
+    private Player _player;
 
     private float AverageInterval
     {
@@ -35,6 +36,19 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    public void Initialize(Player player)
+    {
+        _player = player;
+        _enemyCharacter.SetSpeed(_player.speed);
+        _player.OnChange += OnChange;
+    }
+
+    public void Destroy()
+    {
+        _player.OnChange -= OnChange;
+        Destroy(gameObject);
+    }
+
     private void SaveReceiveTime()
     {
         float interval = Time.time - _lastReceiveTime;
@@ -48,7 +62,7 @@ public class EnemyController : MonoBehaviour
     {
         SaveReceiveTime();
         
-        Vector3 position = _enemyMovement.TargetPosition;
+        Vector3 position = _enemyCharacter.TargetPosition;
         
         foreach (var dataChange in changes)
         {
@@ -78,6 +92,6 @@ public class EnemyController : MonoBehaviour
             }
         }
 
-        _enemyMovement.SetMovement(position, velocity, AverageInterval);
+        _enemyCharacter.SetMovement(position, velocity, AverageInterval);
     }
 }

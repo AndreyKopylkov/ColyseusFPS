@@ -49,9 +49,9 @@
     <Compile Include="Assets\Scripts\CharacterAnimation.cs" />
     <Compile Include="Assets\Scripts\EnemyController.cs" />
     <Compile Include="Assets\Scripts\Character.cs" />
-    <Compile Include="Assets\Scripts\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\InputController.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\Colyseus\State.cs" />
+    <Compile Include="Assets\Scripts\EnemyCharacter.cs" />
     <Compile Include="Assets\Scripts\CheckFly.cs" />
     <Compile Include="Assets\Scripts\PlayerCharacter.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\MultiplayerManager.cs" />

@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _colyseusSettings: {fileID: 11400000, guid: 7dcf2cd42dd236646a1775c333758e0c, type: 2}
-  _player: {fileID: 2651994499770711427, guid: 28e6f729e68c7b34da0f45782ead23ff, type: 3}
+  _playerCharacter: {fileID: 1294411491}
   _enemyController: {fileID: 365987495901346184, guid: 46a1746946262c44b931f07aa6875ba8, type: 3}
 --- !u!4 &824012882
 Transform:
@@ -387,6 +387,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1294411491 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5668833735596454156, guid: 28e6f729e68c7b34da0f45782ead23ff, type: 3}
+  m_PrefabInstance: {fileID: 2108300616}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b62a28917b755714d9f1b9ac9275ef9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1451557971
 GameObject:
   m_ObjectHideFlags: 0
